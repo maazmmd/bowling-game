@@ -38,8 +38,12 @@ public class BowlingGame {
 					} else {
 						score += 10 + strikeBonus(frame);
 					}
+					frame += 2;
+				}else {
+					// Changes for Last frame
+					score += 10 + strikeBonusForLastFrame(frame);
+					frame++;
 				}
-				frame += 2;
 			} else if (isSpare(frame)) {
 				score += 10 + spareBonus(frame);
 				frame += 2;
@@ -61,6 +65,10 @@ public class BowlingGame {
 
 	private int strikeBonus(int frame) {
 		return sumOfRolls(frame + 2);
+	}
+	
+	private int strikeBonusForLastFrame(int frame) {
+		return sumOfRolls(frame + 1);
 	}
 
 	private int spareBonus(int frame) {
